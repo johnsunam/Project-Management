@@ -6,10 +6,11 @@ import React from 'react';
    }
 
    render(){
-     
+
       var members=this.props.memberList.map(function(member){
+         var href="/userdasboard/"+member._id;
         return(<li className="collection-item avatar">
-          <a><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQNlRe6gw2bdrGcRgzizskRI1CEOeMMikpDMNQxOjkoFwlAyx2SHw" alt="" className="circle"/>
+          <a href={href}><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQNlRe6gw2bdrGcRgzizskRI1CEOeMMikpDMNQxOjkoFwlAyx2SHw" alt="" className="circle"/>
            <h6>{member.firstname}&nbsp;{member.lastname}</h6>
           </a>
           </li>

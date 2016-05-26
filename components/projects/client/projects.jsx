@@ -18,7 +18,7 @@ Projects= class Projects extends React.Component {
        <div className="row">
          <div className="input-field col s6">
            <input  id="project_name" type="text" className="validate"/>
-           <label for="project_name">First Name</label>
+           <label for="project_name">Project Name</label>
          </div>
          </div>
      </form>
