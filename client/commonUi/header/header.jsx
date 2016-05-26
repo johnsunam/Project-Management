@@ -5,7 +5,7 @@ componentDidMount(){
   this._dropdown();
 }
   render(){
-    return(<div className='navbar-fixed'>
+    return(<div className='navbar'>
     <ul id="dropdown1" className="dropdown-content">
   <li><a href="#!">SignOut</a></li>
   <li className="divider"></li>

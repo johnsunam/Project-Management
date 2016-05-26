@@ -1,6 +1,10 @@
 import React from 'react';
 import {Meteor} from 'meteor/meteor';
-SingUp=class SignUp extends React.Component {
+import {Accounts} from 'meteor/accounts-base';
+import {Roles} from 'meteor/alanning:roles';
+import {FlowRouter} from 'meteor/kadira:flow-router';
+
+SignUp =class SignUp extends React.Component {
    render()
    {
      return(<div>
@@ -32,24 +36,15 @@ _handleSubmit(e){
       password:$('#password').val(),
     company:$('#company').val()
   };
-      Meteor.call("createAccount",detail,function(error){
-        if(!error)
-        {
-          Meteor.loginWithPassword(detail.username,detail.password,function(err){
-            if(err)
-            {
-              console.log(err.reason);
-            }
-            else {
-                FlowRouter.go('/home');
-            }
-          });
+       Accounts.createUser({email:detail.username,password:detail.password},function(error){
+         if(error){
+         }
+         else{
+           FlowRouter.go('/home');
+         }
+       });
 
-        }
-        else {
-          alert(error.reason);
-        }
-      });
 
-}
- }
+    }
+  }
+export default SignUp;

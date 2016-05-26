@@ -1,4 +1,5 @@
 import React from 'react';
+import Members from '././container/Member.js';
 
 Main= class Main extends React.Component {
   componentDidMount(){
@@ -6,10 +7,9 @@ Main= class Main extends React.Component {
   }
   render(){
 
-    return(<div className="container main">
+    return(
+      <div className="col s8  pull-left">
   <a className="modal-trigger waves-effect waves-light btn"  data-target="modal1"><i className="fa fa-plus"></i>&nbsp;&nbsp;Users</a>
-
-
     <div id="modal1" className="modal modal-fixed-footer">
       <div className="modal-content">
         <h4>Modal Header</h4>
@@ -34,13 +34,12 @@ Main= class Main extends React.Component {
        </div>
      </form>
    </div>
-
       </div>
       <div className="modal-footer">
         <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat" onClick={this._addUser}>Add</a>
       </div>
     </div>
-
+    <Members/>
     </div>)
   }
   _addUser(){
@@ -49,7 +48,13 @@ Main= class Main extends React.Component {
      lastname:$('#last_name').val(),
      email:$('#email').val()
    }
-   console.log(userDetail);
+   Meteor.call('addUser',userDetail,function(error){
+     if(!error)
+     {
+       
+     }
+   });
+
   }
 }
 

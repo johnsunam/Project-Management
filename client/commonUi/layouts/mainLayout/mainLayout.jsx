@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../../header/header';
+import Content from '../../../../components/content/client/content'
 MainLayout=class MainLayout extends React.Component{
  constructor(props){
    super(props)
@@ -7,12 +8,11 @@ MainLayout=class MainLayout extends React.Component{
 
   render()
   {
-
     return(
       <div>
     <Header/>
-      {this.props.content}
-      <Footer/>
+    <Content content={this.props.content}/>
+      
       </div>
     )
   }

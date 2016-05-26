@@ -19,7 +19,7 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 
 autopublish             # Publish all data to the clients (for prototyping)
 insecure                # Allow all DB writes from clients (for prototyping)
-kadira:flow-router
+
 kadira:react-layout
 twbs:bootstrap
 accounts-ui
@@ -29,3 +29,4 @@ accounts-password
 themeteorchef:bert
 materialize:materialize
 fortawesome:fontawesome
+kadira:flow-router
