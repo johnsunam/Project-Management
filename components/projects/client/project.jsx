@@ -7,18 +7,17 @@ import React from 'react';
 
    render(){
 
-      var members=this.props.projectList.map(function(porject){
-        return(<li className="collection-item avatar">
-          <a><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQNlRe6gw2bdrGcRgzizskRI1CEOeMMikpDMNQxOjkoFwlAyx2SHw" alt="" className="circle"/>
-           <h6>{project.name}</h6>
-          </a>
+      var projects=this.props.projectList.map(function(project){
+        return(<li className="collection-item">
+          <a><span> <i className="fa fa-briefcase"></i>&nbsp;&nbsp;{project.projectname}</span>
+</a>
           </li>
         )
       })
      return(
        <div>
        <ul className="collection">
-       {members}
+       {projects}
      </ul>
        </div>
      )

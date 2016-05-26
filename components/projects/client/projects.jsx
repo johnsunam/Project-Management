@@ -25,13 +25,13 @@ Projects= class Projects extends React.Component {
    </div>
       </div>
       <div className="modal-footer">
-        <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat" onClick={this._addUser}>Add</a>
+        <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat" onClick={this._addProject}>Add</a>
       </div>
     </div>
     <Project/>
     </div>)
   }
-  _addUser(){
+  _addProject(){
    Meteor.call('addProject',$('#project_name').val(),function(error){
      if(!error)
      {
