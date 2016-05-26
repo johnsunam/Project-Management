@@ -8,17 +8,17 @@ import React from 'react';
    render(){
 
       var projects=this.props.projectList.map(function(project){
-        return(<li className="collection-item">
-          <a><span> <i className="fa fa-briefcase"></i>&nbsp;&nbsp;{project.projectname}</span>
+      var href="/projectdashboard/"+project._id;
+        return(  <a href={href} className="collection-item"><i className="fa fa-briefcase"></i>&nbsp;&nbsp;{project.projectname}
 </a>
-          </li>
+
         )
       })
      return(
        <div>
-       <ul className="collection">
+       <div className="collection">
        {projects}
-     </ul>
+     </div>
        </div>
      )
    }
