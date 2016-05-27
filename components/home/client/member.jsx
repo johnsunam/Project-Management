@@ -15,7 +15,7 @@ import React from 'react';
           </a>
           </li>
         )
-      })
+      });
      return(
        <div>
        <ul className="collection">

@@ -28,7 +28,7 @@ Projects= class Projects extends React.Component {
         <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat" onClick={this._addProject}>Add</a>
       </div>
     </div>
-    <Project/>
+    <Project helo="helo"/>
     </div>)
   }
   _addProject(){
