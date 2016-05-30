@@ -1,17 +1,16 @@
 import React from 'react';
-
+import NonMembers from './container/nonmembers';
+import ProjectMembers from './container/projectmembers';
 Elements= class Elements extends React.Component {
   constructor(props) {
     super(props)
   }
-  componentWillMount(){
 
-  }
   render(){
-console.log(this.props.obj);
+    console.log(this.props.data);
     return(<div>
-      <NonMembers members={this.props.obj}/>
-      <ProjectMembers members={this.props.obj}/>
+      <NonMembers members={this.props.data}/>
+      <ProjectMembers members={this.props.data}/>
       </div>)
   }
 }

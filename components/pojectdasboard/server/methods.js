@@ -4,5 +4,10 @@ Meteor.methods({
     projects.update(id, {
       $push: { projectmember:{$each:members}}
     });
+  },
+  'deleteMember':function(id,latestmember){
+    projects.update(id,{
+      $set:{projectmember:latestmember}
+    });
   }
 })

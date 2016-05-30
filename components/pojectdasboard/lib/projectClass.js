@@ -1,9 +1,9 @@
 import projects from '../../projects/both/collections';
 import  member from  '../../home/both/collections';
  ProjectClass=class ProjectClass{
-  constructor(id){
-      this._projectId=id;
-      this._project=null;
+  constructor(project){
+      this._projectId=project._id;
+      this._project=project;
       this._nonmembers=[];
       this._companyMembers=[];
       this._projectmembers=[];
@@ -13,8 +13,9 @@ import  member from  '../../home/both/collections';
   getNonMember(){
      var self=this;
       this.getCompanyMembers();
+      console.log(this._companyMembers);
     this.getProjectMembers();
-  this._nonmembers=this._companyMembers;
+    this._nonmembers=this._companyMembers;
     var members=this._projectmembers;
     if(members.length==0)
     {
@@ -35,12 +36,9 @@ import  member from  '../../home/both/collections';
     }
   }
   getProjectMembers(){
-    //console.log(this._projectId);
     self=this;
-   var subcription=Meteor.subscribe('getProjects');
-    var project=projects.find({_id:self._projectId}).fetch();
-    _.each(project[0].projectmember,function(member){
-      console.log();
+    console.log(this.project[0]);
+    _.each(self._project[0].projectmember,function(member){
     var single=_.findWhere(self._companyMembers,{_id:member});
     self._projectmembers.push(single);
     })

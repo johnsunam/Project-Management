@@ -6,15 +6,20 @@ NonMembers= class NonMembers extends React.Component {
   }
   addMember(e){
     e.preventDefault();
-    var obj=this.props.members;
-    obj._membersId.push(e.target.id);
-    obj.addMember();
+    var obj=this.props.members[0]._id;
+     var arr=new Array();
+     arr.push(e.target.id)
+  Meteor.call('addMember',obj,arr);
+
+  }
+  componentDidMount(){
+    $('.modal-trigger').leanModal();
   }
   render(){
 
     var self=this;
-    console.log(this.props);
-       var lists= this.props.members._nonmembers.map(function(member){
+    console.log(this.props.nonmembers);
+       var lists= this.props.nonmembers.map(function(member){
       return(<li className="collection-item avatar">
         <a><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQNlRe6gw2bdrGcRgzizskRI1CEOeMMikpDMNQxOjkoFwlAyx2SHw" alt="" className="circle"/>
          <h6>{member.firstname}&nbsp;{member.lastname}</h6>
@@ -41,3 +46,5 @@ NonMembers= class NonMembers extends React.Component {
     </div>)
   }
 }
+
+export default NonMembers;

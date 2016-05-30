@@ -6,11 +6,10 @@ Projectdashboard= class Projectdashboard extends React.Component {
     super(props);
   }
   componentDidMount(){
-    
+
     $('.modal-trigger').leanModal();
   }
   render(){
-    console.log(this.props.id);
     return(<div className="col s8  pull-left">
       <Elements id={this.props.id}/>
       </div>)
