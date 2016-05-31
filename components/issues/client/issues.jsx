@@ -30,9 +30,11 @@ var projectmember=this.props.project[0].projectmember
 var self=this;
   var issueList=this.props.issuesList.map(function(issue){
 var ids="Id"+issue._id;
+console.log(Meteor.user());
     var issuesDetail={projectmember:projectmember,issue:issue}
     return(<li className="collection-item"><a><i className="fa fa-exclamation-circle"></i>&nbsp;&nbsp;{issue.title}</a>
 <a className='pull-right' href='#' id={ids} data-activates={issue._id} onClick={self.dropdown.bind(self)}>members</a>
+
 <MembersDropdown issuesDetail={issuesDetail}/>
   </li>)
   });

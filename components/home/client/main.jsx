@@ -4,6 +4,7 @@ import Members from '././container/Member.js';
 Main= class Main extends React.Component {
   componentDidMount(){
     $('.modal-trigger').leanModal();
+    console.log(Roles.userIsInRole( Meteor.userId(),[ 'owner' ]));
   }
   render(){
 
@@ -51,7 +52,7 @@ Main= class Main extends React.Component {
    Meteor.call('addUser',userDetail,function(error){
      if(!error)
      {
-       
+
      }
    });
 

@@ -1,13 +1,20 @@
 import React from 'react';
 import {Meteor} from 'meteor/meteor';
+import {FlowRouter} from 'meteor/kadira:flow-router';
 Header= class Header extends React.Component{
 componentDidMount(){
   this._dropdown();
 }
+ logout(e){
+   e.preventDefault();
+   Meteor.logout();
+   FlowRouter.go('/');
+
+ }
   render(){
     return(<div className='navbar'>
     <ul id="dropdown1" className="dropdown-content">
-  <li><a href="#!">SignOut</a></li>
+  <li><a href="#!" onClick={this.logout}>SignOut</a></li>
   <li className="divider"></li>
 </ul>
 <nav>

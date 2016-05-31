@@ -38,6 +38,7 @@ _handleSubmit(e){
   };
        Accounts.createUser({email:detail.username,password:detail.password},function(error){
          if(error){
+           console.log(error.reason);
          }
          else{
            FlowRouter.go('/home');
