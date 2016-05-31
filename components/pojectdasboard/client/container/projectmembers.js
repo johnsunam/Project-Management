@@ -4,6 +4,7 @@ import { composeWithTracker } from 'react-komposer';
 function composer(props,onData){
     const subcription=Meteor.subscribe('getMembers');
   var projectmember=props.members[0].projectmember;
+  console.log(props);
   var projectmembers=new Array();
 if(subcription.ready()){
  const data=member.find().fetch();

@@ -17,7 +17,7 @@ componentDidMount(){
       <li><a href="sass.html">Sass</a></li>
       <li><a href="badges.html">Components</a></li>
 
-      <li><a className="dropdown-button" href="#!" data-activates="dropdown1" onClick={this._dropdown}>Setting<i className="material-icons right"></i></a></li>
+      <li><a className="dropdown-button" id="dropdown" href="#!" data-activates="dropdown1" onClick={this._dropdown}>Setting<i className="material-icons right"></i></a></li>
     </ul>
   </div>
 </nav>
@@ -25,7 +25,7 @@ componentDidMount(){
   }
   _dropdown(){
 
-    $(".dropdown-button").dropdown();
+    $("#dropdown").dropdown();
   }
 }
  export default Header;

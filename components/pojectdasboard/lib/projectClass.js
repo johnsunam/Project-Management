@@ -2,7 +2,6 @@ import projects from '../../projects/both/collections';
 import  member from  '../../home/both/collections';
  ProjectClass=class ProjectClass{
   constructor(project){
-      this._projectId=project._id;
       this._project=project;
       this._nonmembers=[];
       this._companyMembers=[];

@@ -6,7 +6,6 @@ Projects= class Projects extends React.Component {
     $('.modal-trigger').leanModal();
   }
   render(){
-
     return(
       <div className="col s8  pull-left">
   <a className="modal-trigger waves-effect waves-light btn"  data-target="modal1"><i className="fa fa-plus"></i>&nbsp;&nbsp;Projects</a>

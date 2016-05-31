@@ -8,6 +8,7 @@ Projectdashboard= class Projectdashboard extends React.Component {
   componentDidMount(){
 
     $('.modal-trigger').leanModal();
+    $('ul.tabs').tabs();
   }
   render(){
     return(<div className="col s8  pull-left">
