@@ -5,5 +5,9 @@ issues.insert({projectId:id,title:title,comment:comment,assigned:"",status:true}
   },
   'addAssigned':function(id,assigned){
     issues.update(id,{$set:{assigned:assigned}});
+  },
+  'updateStatus':function(id,status)
+  {
+    issues.update(id,{$set:{status:status}});
   }
 });

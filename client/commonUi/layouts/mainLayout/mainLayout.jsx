@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../../header/header';
-import Content from '../../../../components/content/client/content'
+import Content from '../../../../components/content/client/content';
 MainLayout=class MainLayout extends React.Component{
  constructor(props){
    super(props)
@@ -12,8 +12,10 @@ MainLayout=class MainLayout extends React.Component{
       <div>
     <Header/>
     <Content content={this.props.content}/>
-      
+
       </div>
     )
   }
 }
+
+export default MainLayout;

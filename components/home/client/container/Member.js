@@ -5,7 +5,8 @@ import Members from '.././member.jsx';
 function composer(props,onData){
     const subcription= Meteor.subscribe('getMembers');
   if(subcription.ready()){
-    const memberList= member.find().fetch();
+    const memberList= Meteor.users.find().fetch();
+    console.log(memberList);
     onData(null,{memberList});
   }
 };

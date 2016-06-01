@@ -36,7 +36,7 @@ _handleSubmit(e){
       password:$('#password').val(),
     company:$('#company').val()
   };
-       Accounts.createUser({email:detail.username,password:detail.password},function(error){
+       Accounts.createUser({email:detail.username,password:detail.password,roles:"owner",firstname:"john",lastname:"sunam"},function(error){
          if(error){
            console.log(error.reason);
          }

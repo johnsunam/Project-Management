@@ -5,7 +5,7 @@ import member from '../../../home/both/collections';
 function composer(props,onData){
 const subcription=Meteor.subscribe('getMembers');
 if(subcription.ready()){
- const data=member.find().fetch();
+ const data=Meteor.users.find().fetch();
 var nonmembers=new Array();
 var projectmembers=props.issuesDetail.projectmember;
 var assign;

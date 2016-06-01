@@ -3,9 +3,8 @@ import NonMembers from './../NomMembers';
 import member from '../../../home/both/collections';
 function composer(props,onData){
 const subcription=Meteor.subscribe('getMembers');
-console.log(props.members);
 if(subcription.ready()){
-  var companyMembers=member.find().fetch();
+  var companyMembers=Meteor.users.find().fetch();
   console.log(companyMembers);
   nonmembers=companyMembers;
   var members=props.members[0].projectmember;

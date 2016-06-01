@@ -31,7 +31,9 @@ var issue=this.props.issuesDetail.issue._id;
       <ul id={issue} className='dropdown-content member'>
 {memberlist}
 </ul>
+<div>
 <h5>Assigned to-{this.props.issuesDetail.member.firstname}</h5>
+</div>
 </div>)
   }
 }

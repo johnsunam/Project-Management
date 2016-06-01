@@ -1,5 +1,6 @@
 import React from 'react';
 import MembersDropdown from './container/membersdropdown';
+import {Roles} from 'meteor/alanning:roles';
 Issues= class Issues extends React.Component {
   constructor(props) {
     super(props);
@@ -9,7 +10,20 @@ Issues= class Issues extends React.Component {
     $('.modal-trigger').leanModal();
     this.dropdown();
   }
+changeStatus(e){
+  e.preventDefault();
+console.log(this);
+var state;
 
+  if(Meteor.userId==e.target.id || Roles.userIsInRole(Meteor.userId(),'owner') )
+  {
+      state=!this.status;
+    Meteor.call('updateStatus',this._id,state);
+  }
+  else{
+    alert('you need to be owner or assigned user');
+  }
+}
   _addIsses(e){
     e.preventDefault();
     console.log(this.props.project[0]._id);
@@ -25,17 +39,24 @@ Issues= class Issues extends React.Component {
     $(Id).dropdown();
   }
   render(){
-
-var projectmember=this.props.project[0].projectmember
+console.log(this.props);
+var projectmember=this.props.project[0].projectmember;
 var self=this;
   var issueList=this.props.issuesList.map(function(issue){
 var ids="Id"+issue._id;
-console.log(Meteor.user());
-    var issuesDetail={projectmember:projectmember,issue:issue}
-    return(<li className="collection-item"><a><i className="fa fa-exclamation-circle"></i>&nbsp;&nbsp;{issue.title}</a>
+    var issuesDetail={projectmember:projectmember,issue:issue};
+var status;
+    if(issue.status){
+      status="close issue";
+    }
+    else{
+      status="open issue"
+    }
+    return(<li className="collection-item"><a className="pull-left"><i className="fa fa-exclamation-circle"></i>&nbsp;&nbsp;{issue.title}</a>
+    &nbsp;&nbsp;<a className="waves-effect waves-light btn" id={issue.assigned} onClick={self.changeStatus.bind(issue)}>{status}</a>
 <a className='pull-right' href='#' id={ids} data-activates={issue._id} onClick={self.dropdown.bind(self)}>members</a>
-
 <MembersDropdown issuesDetail={issuesDetail}/>
+
   </li>)
   });
     return(
