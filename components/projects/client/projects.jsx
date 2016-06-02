@@ -4,11 +4,14 @@ import Project from './container/Project';
 Projects= class Projects extends React.Component {
   componentDidMount(){
     $('.modal-trigger').leanModal();
+    if(!Roles.userIsInRole(Meteor.userId(),'owner')){
+      document.getElementById("addProject").style.visibility="hidden";
+    }
   }
   render(){
     return(
       <div className="col s8  pull-left">
-  <a className="modal-trigger waves-effect waves-light btn"  data-target="modal1"><i className="fa fa-plus"></i>&nbsp;&nbsp;Projects</a>
+  <a className="modal-trigger waves-effect waves-light btn" id="addProject" data-target="modal1"><i className="fa fa-plus"></i>&nbsp;&nbsp;Projects</a>
     <div id="modal1" className="modal modal-fixed-footer">
       <div className="modal-content">
         <h4>Modal Header</h4>

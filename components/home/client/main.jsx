@@ -4,13 +4,16 @@ import Members from '././container/Member.js';
 Main= class Main extends React.Component {
   componentDidMount(){
     $('.modal-trigger').leanModal();
-    console.log(Roles.userIsInRole( Meteor.userId(),[ 'owner' ]));
+    console.log();
+    if(!Roles.userIsInRole(Meteor.userId(),'owner')){
+      document.getElementById("addUser").style.visibility="hidden";
+    }
   }
   render(){
 
     return(
       <div className="col s8  pull-left">
-  <a className="modal-trigger waves-effect waves-light btn"  data-target="modal1"><i className="fa fa-plus"></i>&nbsp;&nbsp;Users</a>
+  <a className="modal-trigger waves-effect waves-light btn" id="addUser" data-target="modal1"><i className="fa fa-plus"></i>&nbsp;&nbsp;Users</a>
     <div id="modal1" className="modal modal-fixed-footer">
       <div className="modal-content">
         <h4>Modal Header</h4>

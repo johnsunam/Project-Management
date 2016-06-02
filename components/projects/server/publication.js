@@ -1,6 +1,5 @@
-import member from './../both/collections';
+import projects from './../both/collections';
 
 Meteor.publish('getProjects',function(){
-  console.log(projects.find());
   return projects.find();
 });

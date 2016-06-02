@@ -54,7 +54,7 @@ var status;
     }
     return(<li className="collection-item"><a className="pull-left"><i className="fa fa-exclamation-circle"></i>&nbsp;&nbsp;{issue.title}</a>
     &nbsp;&nbsp;<a className="waves-effect waves-light btn" id={issue.assigned} onClick={self.changeStatus.bind(issue)}>{status}</a>
-<a className='pull-right' href='#' id={ids} data-activates={issue._id} onClick={self.dropdown.bind(self)}>members</a>
+<a className='pull-right' href='#' id={ids} data-activates={issue._id} onClick={self.dropdown}>members</a>
 <MembersDropdown issuesDetail={issuesDetail}/>
 
   </li>)

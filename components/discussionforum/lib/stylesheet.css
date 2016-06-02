@@ -1,0 +1,16 @@
+.fixedContainer
+{
+  height: 250px;
+  width:800px;
+  padding:3px;
+    background:grey;
+}
+.chats
+{
+  height:200px;
+   overflow:auto;
+    background:#fff;
+}
+.discussion{
+  height: 500px;
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Sidebar from '../../sidebar/client/sidebar.jsx';
 class Content extends React.Component{
   constructor(props) {
     super(props)

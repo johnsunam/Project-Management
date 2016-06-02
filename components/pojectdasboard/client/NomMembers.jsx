@@ -14,6 +14,9 @@ NonMembers= class NonMembers extends React.Component {
   }
   componentDidMount(){
     $('.modal-trigger').leanModal();
+    if(!Roles.userIsInRole(Meteor.userId(),'owner')){
+      document.getElementById("addmembers").style.visibility="hidden";
+    }
   }
   render(){
 
@@ -29,7 +32,7 @@ NonMembers= class NonMembers extends React.Component {
       )
     })
     return(<div>
-      <a className="modal-trigger waves-effect waves-light btn"  data-target="modal1"><i className="fa fa-plus"></i>&nbsp;&nbsp;Add Members</a>
+      <a className="modal-trigger waves-effect waves-light btn" id="addmembers" data-target="modal1"><i className="fa fa-plus"></i>&nbsp;&nbsp;Add Members</a>
       <div id="modal1" className="modal modal-fixed-footer">
         <div className="modal-content">
           <h4>Non Member List</h4>
