@@ -13,10 +13,21 @@ ProjectMembers= class ProjectMembers extends React.Component {
 formermember=this.props.members[0].projectmember;
 latestmember=_.without(formermember,e.target.id);
 var obj=this.props.members[0]._id;
-Meteor.call('deleteMember',obj,latestmember);
-}
+console.log(this.props.fullDetail.issue);
+  var associated= _.findWhere(this.props.fullDetail.issue,{assigned:e.target.id});
+  console.log(associated);
+  if(associated){
+   alert('cannot delete user is assigned a issue');
+ }
+ else
+   {
+      Meteor.call('deleteMember',obj,latestmember);
+
+   }
+ }
+
   render(){
-    var users=this.props.projectmembers;
+    var users=this.props.fullDetail.projectmembers;
     console.log(users);
     self=this;
     var lists=users.map(function(member){

@@ -8,7 +8,7 @@ Elements= class Elements extends React.Component {
     super(props)
   }
 componentDidMount(){
-console.log(this.props);
+  $('.modal-trigger').leanModal();
 }
   render(){
 

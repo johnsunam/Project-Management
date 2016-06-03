@@ -4,6 +4,7 @@ Accounts.onCreateUser(function(options,user){
   user.roles=options.roles,
   user.firstname=options.firstname,
   user.lastname=options.lastname,
-  user.creator=options.creator
+  user.creator=options.creator,
+  user.assignedIssues=[]
 return user;
 });

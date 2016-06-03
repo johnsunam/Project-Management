@@ -7,7 +7,7 @@ Issues= class Issues extends React.Component {
   }
   componentDidMount(){
 
-    $('.modal-trigger').leanModal();
+$('.modal-trigger').leanModal();
     this.dropdown();
   }
 changeStatus(e){
@@ -29,9 +29,17 @@ var state;
     console.log(this.props.project[0]._id);
     var id=this.props.project[0]._id;
     var title= $('#title').val(),
-    comment=$('#comment').val();
-
-  Meteor.call('addIssues',id,title,comment);
+    comment=$('#comment').val(),
+    creator=Meteor.userId();
+  Meteor.call('addIssues',id,title,comment,creator);
+  }
+  delete(e){
+    e.preventDefault();
+    if(this.creator==Meteor.userId() || this.assigned == Meteor.userId() || Roles.userIsInRole(Meteor.userId(),'owner'))
+{
+  console.log(this);
+  Meteor.call('deleteIssue',this._id);
+}
   }
   dropdown(e){
     e.preventDefault();
@@ -54,6 +62,7 @@ var status;
     }
     return(<li className="collection-item"><a className="pull-left"><i className="fa fa-exclamation-circle"></i>&nbsp;&nbsp;{issue.title}</a>
     &nbsp;&nbsp;<a className="waves-effect waves-light btn" id={issue.assigned} onClick={self.changeStatus.bind(issue)}>{status}</a>
+<a className="waves-effect waves-light btn pull-right" id={issue.assigned} onClick={self.delete.bind(issue)}>Delete</a>
 <a className='pull-right' href='#' id={ids} data-activates={issue._id} onClick={self.dropdown}>members</a>
 <MembersDropdown issuesDetail={issuesDetail}/>
 

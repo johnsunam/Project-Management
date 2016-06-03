@@ -19,7 +19,8 @@ MembersDropdown= class MembersDropdown extends React.Component {
   addAssigned(e)
   {
     e.preventDefault();
-   Meteor.call('addAssigned',e.target.className,e.target.id);
+console.log(this);
+Meteor.call('addAssigned',e.target.className,e.target.id,this.props.issuesDetail.issue.assigned);
   }
   render(){
 var self=this;
