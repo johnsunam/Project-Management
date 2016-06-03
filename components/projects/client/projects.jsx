@@ -34,7 +34,8 @@ Projects= class Projects extends React.Component {
     </div>)
   }
   _addProject(){
-   Meteor.call('addProject',$('#project_name').val(),function(error){
+    var creator=Meteor.userId();
+   Meteor.call('addProject',$('#project_name').val(),creator,function(error){
      if(!error)
      {
 

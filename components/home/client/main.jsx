@@ -50,7 +50,8 @@ Main= class Main extends React.Component {
    var userDetail={
      firstname:$('#first_name').val(),
      lastname:$('#last_name').val(),
-     email:$('#email').val()
+     email:$('#email').val(),
+     creator:Meteor.userId()
    }
    Meteor.call('addUser',userDetail,function(error){
      if(!error)

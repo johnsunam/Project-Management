@@ -10,7 +10,8 @@ function composer(props,onData){
     var projs= new Array();
   if(Roles.userIsInRole(Meteor.userId(),'owner'))
   {
-    projs=projectList;
+    var projs=_.where(projectList,{creator:Meteor.userId()});
+
   }
   else{
     _.each(projectList,function(pro){

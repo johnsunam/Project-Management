@@ -25,13 +25,17 @@ SignIn =class SignInp extends React.Component {
                <input type="password" className="form-control" placeholder="Password" id="password"/>
               </div>
 
-              <button className="btn btn-primary" type="submit" onClick={this._handleSubmit}>signup</button>
+              <button className="btn btn-primary" type="submit" onClick={this._handleSubmit}>SignIn</button>
       </form>
-        <a href="#" onClick={this.handleForget}>Forget password?</a>
+        <a href="#" onClick={this.handleForget}>Forget password?</a>  <a href="#" onClick={this.handleSignup} className="pull-right">signup</a>
       </div>
 
       </div>
        </div>)
+   }
+   handleSignup(e){
+     e.preventDefault();
+     FlowRouter.go('/signup')
    }
 _handleSubmit(e){
   e.preventDefault();
