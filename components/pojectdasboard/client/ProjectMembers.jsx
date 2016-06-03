@@ -40,7 +40,7 @@ console.log(this.props.fullDetail.issue);
 
       )
     });
-    return(<div className="well">
+    return(<div>
 <ul className="collection">
 {lists}
 </ul>
