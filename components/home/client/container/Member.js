@@ -11,7 +11,7 @@ if(Roles.userIsInRole(Meteor.userId(),'owner'))
   var memberList=_.where(members,{creator:Meteor.userId()});
 }
 else{
-  var memberList=_where(members,{creator:Meteor.user().creator});
+  var memberList=_.where(members,{creator:Meteor.user().creator});
 }
 
     console.log(memberList);
