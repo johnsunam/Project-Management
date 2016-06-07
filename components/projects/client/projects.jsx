@@ -10,7 +10,7 @@ Projects= class Projects extends React.Component {
   }
   render(){
     return(
-      <div className="col s8  pull-left">
+      <div className="">
   <a className="modal-trigger waves-effect waves-light btn" id="addProject" data-target="modal1"><i className="fa fa-plus"></i>&nbsp;&nbsp;Projects</a>
     <div id="modal1" className="modal modal-fixed-footer">
       <div className="modal-content">

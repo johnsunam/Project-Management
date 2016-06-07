@@ -28,9 +28,11 @@ var contentlist=this.props.members.map(function(member){
   return(<div className="tab-pane" id={member._id}><ChatContent partnerId={member._id}/></div>)
 });
 
-    return(<div className="col s8  pull-left">
+    return(<div className="">
+    <div>
     <ChatHeader partners={self.state.partner}/>
-<div className="col-xs-3 chatlists well">
+</div>
+<div className="col s3 chatlists well">
         <h5>chat list</h5>
 <div className="">
          <ul className="nav nav-tabs tabs-left">
@@ -38,15 +40,13 @@ var contentlist=this.props.members.map(function(member){
          </ul>
 </div>
        </div>
-<div className="col-xs-9 ">
+<div className="col s9">
 <div className="tab-content outer">
   {contentlist}
 </div>
+</div>  <div className="clearfix"></div>
 
-
-</div>                  <div className="clearfix"></div>
-
-              </div>
+</div>
 
 
 

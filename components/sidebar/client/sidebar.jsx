@@ -10,7 +10,7 @@ Sidebar= class Sidebar extends React.Component {
       height:100
     }
     return(
-      <div className="col s3 pull-left" >
+      <div className="" >
       <div className="collection" style={divstyle}>
     <a href="/home" className="collection-item" style={item}>Members</a>
     <a href="/projects" className="collection-item" style={item}>Projects</a>

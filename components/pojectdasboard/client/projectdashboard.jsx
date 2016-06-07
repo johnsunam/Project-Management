@@ -11,7 +11,7 @@ Projectdashboard= class Projectdashboard extends React.Component {
     $('ul.tabs').tabs();
   }
   render(){
-    return(<div className="col s8  pull-left">
+    return(<div className="">
       <Elements id={this.props.id}/>
       </div>)
   }
