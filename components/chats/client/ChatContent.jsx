@@ -8,17 +8,19 @@ ChatContent= class ChatContent extends React.Component {
 
     if(e.key == 'Enter')
     {
-      console.log(this.props.partnerId);
-  Meteor.call('addConversation',this.props.partnerId);
+      //alert(e.target.value)
+
+  Meteor.call('addConversation',e.target.value,this.props.partnerId);
 
     }
   }
   render()
   {
+    console.log(this.props.conversations);
     var mesg=this.props.conversations.map(function(mg){
       console.log(mg);
       return(<li>
-        {mg._id}
+        {mg.name}:&nbsp;&nbsp;{mg.content}
         </li>)
     });
     return(<div>
@@ -29,7 +31,7 @@ ChatContent= class ChatContent extends React.Component {
 </div>
             <div className="row">
         <div className="input-field col s12">
-          <input id="chat" onKeyDown={this.addChat.bind(this)}/>
+          <input  id={this.props.partnerId}  onKeyDown={this.addChat.bind(this)}/>
         </div>
       </div>
       </div>)

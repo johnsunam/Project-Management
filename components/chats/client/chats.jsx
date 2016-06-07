@@ -2,31 +2,34 @@
 import React from 'react';
 import {FlowRouter} from 'meteor/kadira:flow-router';
 import ChatContent from './container/ChatContent.js';
-
+import ChatHeader from './container/ChatHeader';
 Chats= class Chats extends React.Component {
   constructor(props) {
     super(props);
+    this.state={partner:" "};
   }
-handleChat(e){
+handleClick(e){
   e.preventDefault();
-  console.log(this);
-  var partner='/single/'+this._id;
-  FlowRouter.go(partner);
+console.log(this.sel.state);
+console.log(this.id);
+this.sel.setState({partner:this.id});
+console.log(this.sel.state.partner);
 }
+
 
   render(){
     var self=this;
 var chatlists=this.props.members.map(function(member){
   var href='#'+member._id;
-  return( <li ><a href={href} data-toggle="tab">{member.firstname}&nbsp;&nbsp;{member.lastname}</a></li>)
+  var com={sel:self,id:member._id};
+  return( <li onClick={self.handleClick.bind(com)}><a  href={href} data-toggle="tab">{member.firstname}&nbsp;&nbsp;{member.lastname}</a></li>)
 });
 var contentlist=this.props.members.map(function(member){
   return(<div className="tab-pane" id={member._id}><ChatContent partnerId={member._id}/></div>)
 });
 
-    console.log(this.props.members);
     return(<div className="col s8  pull-left">
-    <ChatHeader/>
+    <ChatHeader partners={self.state.partner}/>
 <div className="col-xs-3 chatlists well">
         <h5>chat list</h5>
 <div className="">
