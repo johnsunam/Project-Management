@@ -51,17 +51,28 @@ console.log(this.props);
 var projectmember=this.props.project[0].projectmember;
 var self=this;
   var issueList=this.props.issuesList.map(function(issue){
-var ids="Id"+issue._id;
+    var ids="Id"+issue._id;
     var issuesDetail={projectmember:projectmember,issue:issue};
-var status;
+    var status;
+    if(issue.label){
+      var className="btn waves-effect waves-light pull-right"+" "+issue.bgcolor;
+      var con=issue.lbltxt;
+    }
+    else{
+      var className="btn waves-effect waves-light pull-right";
+      var con=" ";
+      $('#label').addClass('hidden');
+    }
     if(issue.status){
       status="close issue";
     }
     else{
       status="open issue"
     }
-    return(<li className="collection-item"><a className="pull-left"><i className="fa fa-exclamation-circle"></i>&nbsp;&nbsp;{issue.title}</a>
+    var href='/issue/'+issue._id;
+    return(<li className="collection-item"><a className="pull-left" href={href}><i className="fa fa-exclamation-circle"></i>&nbsp;&nbsp;{issue.title}</a>
     &nbsp;&nbsp;<a className="waves-effect waves-light btn" id={issue.assigned} onClick={self.changeStatus.bind(issue)}>{status}</a>
+    <a className={className} id="label">{con}</a>
 <a className="waves-effect waves-light btn pull-right" id={issue.assigned} onClick={self.delete.bind(issue)}>Delete</a>
 <a className='pull-right' href='#' id={ids} data-activates={issue._id} onClick={self.dropdown}>members</a>
 <MembersDropdown issuesDetail={issuesDetail}/>

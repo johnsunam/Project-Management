@@ -1,7 +1,7 @@
 import issues from './../both/collection';
 Meteor.methods({
   'addIssues':function(id,title,comment,creator){
-issues.insert({projectId:id,title:title,comment:comment,assigned:"",status:true,creator:creator});
+issues.insert({projectId:id,title:title,comment:comment,assigned:"",status:true,creator:creator,label:null,lbltxt:"",bgcolor:""});
   },
   'addAssigned':function(id,assigned,formermember){
 if(formermember){
@@ -18,6 +18,9 @@ if(formermember){
   },
   'deleteIssue':function(id){
     issues.remove(id);
+  },
+  'tagLabel':function(labelId,issueId,txt,bgcolor){
+    issues.update(issueId,{$set:{label:labelId,lbltxt:txt,bgcolor:bgcolor}});
   }
 
 });
