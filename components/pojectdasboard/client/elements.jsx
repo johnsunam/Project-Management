@@ -4,6 +4,7 @@ import ProjectMembers from './container/projectmembers';
 import Issues from '../../issues/client/container/issues';
 import Discussion from '../../discussionforum/client/discussion';
 import Chats from '../../chats/client/container/chats';
+import Label from '../../label/client/container/label'
 Elements= class Elements extends React.Component {
   constructor(props) {
     super(props)
@@ -23,6 +24,7 @@ componentDidMount(){
        <li className="tab col s3"><a  href="#test2">Issues</a></li>
        <li className="tab col s3"><a href="#test3">Discussion forum</a></li>
       <li className="tab col s3"><a href="#test4">Chats</a></li>
+      <li className="tab col s3"><a href="#test5">Labels</a></li>
      </ul>
    </div>
    <div id="test1" className="">
@@ -33,7 +35,7 @@ componentDidMount(){
    <div id="test2" className="col s12"><Issues project={this.props.data}/></div>
    <div id="test3" className="col s12"><Discussion project={this.props.data}/></div>
    <div id="test4" className="col s12"><Chats project={this.props.data}/></div>
-
+   <div id="test5" className="col s12"><Label project={this.props.data}/></div>
 </div>
 </div>)
   }
