@@ -28,12 +28,16 @@ var issue=this.props.issuesDetail.issue._id;
     var memberlist=this.props.issuesDetail.nonmembers.map(function(mem){
    return(<li id={mem._id} className={issue} onClick={self.addAssigned.bind(self)}>{mem.firstname}</li>)
    });
-    return(<div>
-      <ul id={issue} className='dropdown-content member'>
+    return(<div className="col-md-12 pull-right">
+    <div className="col-md-4">
+      <a className='btn btn-default btn-xs dropdown-toggle' data-toggle="dropdown" href='#'>members</a>
+      <ul className="dropdown-menu">
+
 {memberlist}
 </ul>
-<div>
-<h5>Assigned to-{this.props.issuesDetail.member.firstname}</h5>
+</div>
+<div className="col-md-8">
+<span className="text-sm">Assigned to-{this.props.issuesDetail.member.firstname}</span>
 </div>
 </div>)
   }

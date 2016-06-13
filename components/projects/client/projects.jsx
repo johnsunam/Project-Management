@@ -10,26 +10,36 @@ Projects= class Projects extends React.Component {
   }
   render(){
     return(
-      <div className="">
-  <a className="modal-trigger waves-effect waves-light btn" id="addProject" data-target="modal1"><i className="fa fa-plus"></i>&nbsp;&nbsp;Projects</a>
-    <div id="modal1" className="modal modal-fixed-footer">
-      <div className="modal-content">
-        <h4>Modal Header</h4>
+    <div>
+    <a  className="btn btn-s-md btn-default btn-rounded" id="addProject" data-toggle="modal" data-target="#myModal">
+    Open Modal</a>
+<hr/>
+
+<div id="myModal" className="modal fade" role="dialog">
+  <div className="modal-dialog">
+    <div className="modal-content">
+      <div className="modal-header">
+        <button type="button" className="close" data-dismiss="modal">&times;</button>
+        <h4 className="modal-title">Add Project</h4>
+      </div>
+      <div className="modal-body">
+      <form className="">
         <div className="row">
-     <form className="col s12">
-       <div className="row">
-         <div className="input-field col s6">
-           <input  id="project_name" type="text" className="validate"/>
-           <label for="project_name">Project Name</label>
-         </div>
-         </div>
-     </form>
-   </div>
+          <div className="form-group col-md-6">
+          <label for="project_name">Project Name</label>
+            <input  id="project_name" type="text" className="form-control"/>
+
+          </div>
+          </div>
+      </form>
       </div>
       <div className="modal-footer">
-        <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat" onClick={this._addProject}>Add</a>
+        <button type="button" className="btn btn-default" data-dismiss="modal" onClick={this._addProject}>Add</button>
       </div>
     </div>
+
+  </div>
+</div>
     <Project/>
     </div>)
   }

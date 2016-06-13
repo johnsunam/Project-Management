@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../../header/header';
+import Header from '../../header/header.js';
 import Content from '../../../../components/content/client/content';
 MainLayout=class MainLayout extends React.Component{
  constructor(props){
@@ -9,11 +9,15 @@ MainLayout=class MainLayout extends React.Component{
   render()
   {
     return(
-      <div>
+      <section className="hbox stretch">
+    <Aside/>
+    <section id="content">
+    <section className="vbox">
     <Header/>
     <Content content={this.props.content}/>
-
-      </div>
+</section>
+</section>
+      </section>
     )
   }
 }

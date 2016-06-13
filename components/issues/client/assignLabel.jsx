@@ -19,21 +19,27 @@ AssignLabel= class AssignLabel extends React.Component {
   chooseLabel(e){
     e.preventDefault();
    var txt=document.getElementById(e.target.id).innerText;
+   console.log(this.props.issue);
+
+   Meteor.call('updateNumber',this.props.issue.label,e.target.id);
    Meteor.call('tagLabel',e.target.id,this.props.issue._id,txt,e.target.className);
 
   }
   render(){
     var self=this;
+
     var labelList=this.props.labels.map(function(label){
-      return(<li className={label.bgcolor}  id={label._id} onClick={self.chooseLabel.bind(self)}>{label.labelname}</li>)
+var style={background:label.bgcolor};
+      return(<li className={label.bgcolor} style={style }  id={label._id} onClick={self.chooseLabel.bind(self)}>{label.labelname}</li>)
     });
+
     return(<div>
-      <a className='dropdown-button btn pull-right' href='#' data-activates='label'>labels</a>
-  <ul id='label' className='dropdown-content'>
+      <a className='btn btn-success dropdown-toggle'data-toggle="dropdown">labels</a>
+  <ul id='label' className='dropdown-menu'>
     {labelList}
   </ul>
 
-    </div>)
-  }
+    </div>
+   ) }
 }
 export default AssignLabel;

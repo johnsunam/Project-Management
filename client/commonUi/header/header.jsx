@@ -12,23 +12,31 @@ componentDidMount(){
 
  }
   render(){
-    return(<div className='navbar'>
-    <ul id="dropdown1" className="dropdown-content">
-  <li><a href="#!" onClick={this.logout}>SignOut</a></li>
-  <li className="divider"></li>
-</ul>
-<nav>
-  <div className="nav-wrapper">
-    <a href="#!" className="brand-logo">WSCRM</a>
-    <ul className="right hide-on-med-and-down">
-      <li><a href="sass.html">Sass</a></li>
-      <li><a href="badges.html">Components</a></li>
+    var name= this.props.user[0].firstname+" "+this.props.user[0].lastname;
+    return(<header className="header bg-black navbar navbar-inverse">
+       <div className="collapse navbar-collapse pull-in">
 
-      <li><a className="dropdown-button" id="dropdown" href="#!" data-activates="dropdown1" onClick={this._dropdown}>Setting<i className="material-icons right"></i></a></li>
-    </ul>
-  </div>
-</nav>
-    </div>)
+                   <ul className="nav navbar-nav navbar-right">
+                                  <li className="dropdown">
+                                    <a href="dashboard.html#" className="dropdown-toggle" data-toggle="dropdown">
+                                       <span className="thumb-sm avatar pull-left m-t-n-xs m-r-xs">
+                                          <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQNlRe6gw2bdrGcRgzizskRI1CEOeMMikpDMNQxOjkoFwlAyx2SHw"/>
+                                         </span> {name} <b classNameName="caret"></b>
+                                       </a>
+                                       <ul className="dropdown-menu animated fadeInLeft">
+                                          <li> <a href="dashboard.html#">Settings</a> </li>
+                                          <li> <a href="profile.html">Profile</a> </li>
+                                           <li> <a href="dashboard.html#">
+                                             <span className="badge bg-danger pull-right">3</span> Notifications </a> </li>
+                                              <li> <a href="docs.html">Help</a> </li>
+                                               <li onClick={this.logout}> <a href="signin.html">Logout</a>
+                                                </li>
+                                              </ul>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </header>
+   )
   }
   _dropdown(){
 

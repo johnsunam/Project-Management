@@ -7,13 +7,14 @@ Projectdashboard= class Projectdashboard extends React.Component {
   }
   componentDidMount(){
 
-    $('.modal-trigger').leanModal();
+    
     $('ul.tabs').tabs();
   }
   render(){
-    return(<div className="">
+
+    return(<section className="hbox">
       <Elements id={this.props.id}/>
-      </div>)
+      </section>)
   }
 }
 

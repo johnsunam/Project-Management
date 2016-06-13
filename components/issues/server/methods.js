@@ -1,4 +1,5 @@
 import issues from './../both/collection';
+import label from '../../label/both/collection';
 Meteor.methods({
   'addIssues':function(id,title,comment,creator){
 issues.insert({projectId:id,title:title,comment:comment,assigned:"",status:true,creator:creator,label:null,lbltxt:"",bgcolor:""});
@@ -21,6 +22,11 @@ if(formermember){
   },
   'tagLabel':function(labelId,issueId,txt,bgcolor){
     issues.update(issueId,{$set:{label:labelId,lbltxt:txt,bgcolor:bgcolor}});
+  },
+  'updateNumber':function(previous,latest){
+    label.update(previous,{$inc:{issuenumber:-1}});
+    label.update(latest,{$inc:{issuenumber:1}});
+
   }
 
 });

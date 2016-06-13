@@ -27,7 +27,6 @@ accounts-ui
 alanning:roles
 accounts-password
 themeteorchef:bert
-materialize:materialize
 fortawesome:fontawesome
 kadira:flow-router
 email

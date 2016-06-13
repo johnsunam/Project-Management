@@ -3,48 +3,10 @@ import Members from '././container/Member.js';
 
 Main= class Main extends React.Component {
   componentDidMount(){
-    $('.modal-trigger').leanModal();
-    console.log();
     if(!Roles.userIsInRole(Meteor.userId(),'owner')){
       document.getElementById("addUser").style.visibility="hidden";
     }
-  }
-  render(){
 
-    return(
-      <div className="">
-  <a className="modal-trigger waves-effect waves-light btn" id="addUser" data-target="modal1"><i className="fa fa-plus"></i>&nbsp;&nbsp;Users</a>
-    <div id="modal1" className="modal modal-fixed-footer">
-      <div className="modal-content">
-        <h4>Modal Header</h4>
-        <div className="row">
-     <form className="col s12">
-       <div className="row">
-         <div className="input-field col s6">
-           <input  id="first_name" type="text" className="validate"/>
-           <label for="first_name">First Name</label>
-         </div>
-         <div className="input-field col s6">
-           <input id="last_name" type="text" className="validate"/>
-           <label for="last_name">Last Name</label>
-         </div>
-       </div>
-
-       <div className="row">
-         <div className="input-field col s12">
-           <input id="email" type="email" className="validate"/>
-           <label for="email">Email</label>
-         </div>
-       </div>
-     </form>
-   </div>
-      </div>
-      <div className="modal-footer">
-        <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat" onClick={this._addUser}>Add</a>
-      </div>
-    </div>
-    <Members/>
-    </div>)
   }
   _addUser(){
    var userDetail={
@@ -61,6 +23,59 @@ Main= class Main extends React.Component {
    });
 
   }
+  render(){
+    var hgt={height:500}
+    return(<div className="" style={hgt}>
+    <div>
+    <a className="btn btn-s-md btn-default btn-rounded" id="addUser" data-toggle="modal" data-target="#userModal">
+    &nbsp;&nbsp;Users
+    </a>
+    <hr/>
+    </div>
+<div id="userModal" className="modal fade " role="dialog">
+  <div className="modal-dialog">
+    <div className="modal-content">
+      <div className="modal-header">
+        <button type="button" className="close" data-dismiss="modal">&times;</button>
+        <h4 className="modal-title">Add Project</h4>
+      </div>
+      <div className="modal-body">
+      <div className="container">
+        <form className="">
+          <div className="row">
+            <div className="input-group ">
+            <label for="firstname">First Name:</label>
+              <input  id="first_name" type="text" placeholder="firstname" className="form-control"/>
+            </div>
+            </div>
+            <div className="row">
+            <div className="input-group">
+              <label for="lastname">Last Name:</label>
+              <input id="last_name" type="text" placeholder="lastname" className="form-control"/>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="input-group">
+            <label for="email">Email:</label>
+              <input id="email" type="email" placeholder="email"className="form-control"/>
+            </div>
+          </div>
+        </form>
+        </div>
+      </div>
+      <div className="modal-footer">
+        <button type="button" className="btn btn-default" data-dismiss="modal" onClick={this._addUser}>Add</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<Members/>
+    </div>)
+  }
+
+
 }
 
 export default Main;

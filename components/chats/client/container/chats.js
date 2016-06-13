@@ -18,6 +18,7 @@ var members=  new Array();
         members.push(mem);
       }
     });
+    console.log(members);
 onData(null,{members});
 }
 };

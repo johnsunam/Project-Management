@@ -6,9 +6,6 @@ class Content extends React.Component{
   }
   render(){
     return(<div className="row">
-    <div className="col s3 well">
-      <Sidebar/>
-</div>
       <div className="col s9">
       {this.props.content}
 </div>

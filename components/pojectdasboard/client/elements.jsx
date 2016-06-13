@@ -10,13 +10,11 @@ Elements= class Elements extends React.Component {
     super(props)
   }
 componentDidMount(){
-  $('.modal-trigger').leanModal();
-   $('ul.tabs').tabs();
-   $('ul.tabs').tabs('select_tab', 'tab_id');
+
 }
   render(){
-
-      return(<div>
+var hgt={height:550}
+      return(/*<div>
         <div className="row">
    <div className="">
      <ul className="tabs">
@@ -37,7 +35,49 @@ componentDidMount(){
    <div id="test4" className="col s12"><Chats project={this.props.data}/></div>
    <div id="test5" className="col s12"><Label project={this.props.data}/></div>
 </div>
-</div>)
+</div>*/
+<section className="panel"style={hgt} >
+ <header className="panel-heading bg-success">
+  <ul className="nav nav-tabs nav-justified text-uc">
+  <li className="">
+  <a href="#member" data-toggle="tab">Project Members</a>
+  </li>
+  <li className="">
+  <a href="#issue" data-toggle="tab" value="">Issues</a>
+  </li>
+  <li className="">
+  <a href="#discussion" data-toggle="tab">Discussion Forum</a>
+  </li>
+  <li className="">
+  <a href="#chats" data-toggle="tab">Chats</a>
+  </li>
+  <li className="">
+  <a href="#labels" data-toggle="tab">Labels</a>
+  </li>
+   </ul>
+   </header>
+   <div className="panel-body" >
+   <div className="tab-content">
+  <div className="tab-pane" id="member">
+  <div className="well"><NonMembers members={this.props.data}/>
+  <ProjectMembers members={this.props.data}/>
+  </div>
+  </div>
+  <div className="tab-pane" id="issue">
+  <Issues project={this.props.data}/>
+  </div>
+  <div className="tab-pane" id="discussion">
+  <Discussion project={this.props.data}/>
+  </div>
+  <div className="tab-pane" id="chats">
+  <Chats project={this.props.data}/>
+  </div>
+  <div className="tab-pane" id="labels">
+  <Label project={this.props.data}/>
+  </div>
+  </div>
+  </div>
+   </section>)
   }
 }
 

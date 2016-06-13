@@ -1,6 +1,6 @@
 import { composeWithTracker } from 'react-komposer';
 import projects from '../../both/collections';
-import Project from '.././project';
+import Project from '.././project.jsx';
 
 function composer(props,onData){
     const subcription= Meteor.subscribe('getProjects');
@@ -23,6 +23,7 @@ function composer(props,onData){
       });
     });
     }
+    console.log(projs);
     onData(null,{projs});
   }
 };

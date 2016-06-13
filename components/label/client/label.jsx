@@ -3,48 +3,56 @@ import React from 'react';
 Label= class Label extends React.Component {
   constructor(props) {
     super(props);
-    this.state={color:null};
-    this.state={colorClass: "grey lighten-4"};
-
+    this.state={background:""}
   }
   changeColor(e){
     e.preventDefault();
-    this.setState({color:e.target.id});
-    this.setState({colorClass:e.target.className});
-
+    this.setState({background:e.target.id});
+    $("#colorButton").css('background',e.target.id);
   }
   handleSubmit(e){
     e.preventDefault();
-    var labelname=$('#label').val();
-    console.log(this.state.colorClass);
-    console.log(this.props.project[0]._id);
-    Meteor.call('addLabel',labelname,this.state.colorClass,this.props.project[0]._id);
+    var labelname=$('#labelname').val();
+    Meteor.call('addLabel',labelname,this.state.background,this.props.project[0]._id);
   }
   handleDelete(e){
     e.preventDefault();
-    alert(e.target.id)
-    Meteor.call('deleteLabel',e.target.id);
+    if(this == 0){
+   Meteor.call('deleteLabel',e.target.id);
+ }
+ else {
+   alert('this label has been tagged with issue');
+ }
   }
+
   render(){
     var self=this;
+    var styles=[{background:"#b71c1c"},
+  {background:"#880e4f"},
+{background:"#311b92"},
+{background:"#6200ea"},
+{background:"#1b5e20"},
+{background:"#aeea00"}]
+
     var labels=this.props.labels.map(function(label){
-    var classes="waves-effect waves-light btn"+" "+label.bgcolor;
-    return(<li className="collection-item"><a className={classes}><i className="fa fa-tags" aria-hidden="true">
-      </i>{label.labelname}</a><a href="#" className="pull-right btn" id={label._id} onClick={self.handleDelete.bind(self)}><i id={label._id} className="fa fa-times" aria-hidden="true"></i><span id={label._id}>Delete</span></a></li>)
+  var labelStyle={background:label.bgcolor};
+    return(<li className=""><a className="btn btn-s-md btn-default btn-rounded" style={labelStyle}><i className="fa fa-tags" aria-hidden="true">
+      </i>{label.labelname}</a><a href="#" className="pull-right btn btn-s-md btn-danger btn-rounded" id={label._id} onClick={self.handleDelete.bind(label.issuenumber)}><i id={label._id} className="fa fa-times" aria-hidden="true"></i><span id={label._id}>Delete</span></a><hr/></li>)
     });
     var liststyle={
       width:100
     };
-    var background="background"+"-"+"color";
-    var buttonColor={background:this.state.color};
-    console.log(buttonColor);
-    return(<div>
+var colors=styles.map(function(color){
+      return(
+        <li onClick={self.changeColor.bind(self)}  id={color.background} style={color}><a href="#!"id={color.background}></a></li>)
+    })
+    return(/*<div>
     <a className="waves-effect waves-light btn">New Label</a>
     <div className="well">
     <div className="row">
     <div className="input-field col s4">
-      <input id="label" type="text" placeholder="label"/>
-      <label for="password">Isses Title</label>
+      <input id="labelname" type="text" placeholder=""/>
+      <label for="labelname">Label Name</label>
     </div>
     <div className="col s4">
     <a className='dropdown-button btn sample' style={buttonColor} href='#' data-activates='dropdown3'>select color</a>
@@ -75,7 +83,40 @@ Label= class Label extends React.Component {
 {labels}
      </ul>
     </div>
-      </div>)
+      </div>*/
+<div>
+  <a className="accordion-toggle collapsed btn btn-s-md btn-info btn-rounded"data-toggle="collapse" data-parent="#accordion2" href="components.html#collapseOne"> <i className="fa fa-plus"></i>Label</a>
+<div id="collapseOne" className="panel-collapse collapse">
+<div className="panel-body text-sm">
+<div className="well">
+<div className="row">
+<div className="input-group">
+  <input id="labelname" type="text" className="form-control"placeholder="Label Name"/>
+</div>
+<div className="pull-right">
+<button className="btn btn-s-md btn-white btn-rounded dropdown-toggle" id="colorButton" data-toggle="dropdown">
+Color
+<span className="caret"></span>
+</button>
+
+<ul className="dropdown-menu">
+{colors}
+</ul>
+</div>
+<hr/>
+<div className="">
+<a className="btn btn-s-md btn-success btn-rounded" onClick={this.handleSubmit.bind(this)}>create</a>
+</div>
+</div>
+</div></div>
+</div>
+<div className="well">
+<ul className="">
+{labels}
+ </ul>
+</div>
+</div>)
+
   }
 }
 

@@ -22,13 +22,20 @@ console.log(this.sel.state.partner);
 var chatlists=this.props.members.map(function(member){
   var href='#'+member._id;
   var com={sel:self,id:member._id};
-  return( <li onClick={self.handleClick.bind(com)}><a  href={href} data-toggle="tab">{member.firstname}&nbsp;&nbsp;{member.lastname}</a></li>)
+
+  return( //<li onClick={self.handleClick.bind(com)}><a  href={href} data-toggle="tab">{member.firstname}&nbsp;&nbsp;{member.lastname}</a></li>
+  <a className="list-group-item" href={href}  onClick={self.handleClick.bind(com)} data-toggle="tab">
+  <i className="fa fa-circle text-success text-xs">
+  </i>
+  <span>{member.firstname}&nbsp;&nbsp;{member.lastname}</span>
+  </a>
+)
 });
 var contentlist=this.props.members.map(function(member){
   return(<div className="tab-pane" id={member._id}><ChatContent partnerId={member._id}/></div>)
 });
-
-    return(<div className="">
+var hgt={height:450};
+    return(/*<div className="">
     <div>
     <ChatHeader partners={self.state.partner}/>
 </div>
@@ -46,11 +53,31 @@ var contentlist=this.props.members.map(function(member){
 </div>
 </div>  <div className="clearfix"></div>
 
+</div>*/
+<div className="hbox stretch" style={hgt}>
+<aside className="bg-light lter" style={hgt}>
+<section className="panel">
+<header className="panel-heading">Chat</header>
+<div className="tab-content outer">
+  {contentlist}
+</div>
+ </section>
+</aside>
+<aside className="aside-sm">
+<section className="vbox">
+<header className="bg-light dk header">
+<p>Contacts (25)</p>
+</header>
+<section className="scrollable bg-white b-l w-f">
+<div className="list-group list-group-alt no-radius no-borders nav nav-tabs">
+{chatlists}
+ </div>
+ </section>
+ <footer className="footer text-center b-t b-l"> <button className="btn btn-success btn-sm"><i className="fa fa-plus"></i> New contact</button> </footer> </section> </aside>
 </div>
 
 
-
-          )
+  )
   }
 }
 
