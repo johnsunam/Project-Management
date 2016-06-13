@@ -39,7 +39,7 @@ var hgt={height:550}
 <section className="panel"style={hgt} >
  <header className="panel-heading bg-success">
   <ul className="nav nav-tabs nav-justified text-uc">
-  <li className="">
+  <li className="active">
   <a href="#member" data-toggle="tab">Project Members</a>
   </li>
   <li className="">
@@ -58,7 +58,7 @@ var hgt={height:550}
    </header>
    <div className="panel-body" >
    <div className="tab-content">
-  <div className="tab-pane" id="member">
+  <div className="tab-pane active" id="member">
   <div className="well"><NonMembers members={this.props.data}/>
   <ProjectMembers members={this.props.data}/>
   </div>
@@ -70,7 +70,7 @@ var hgt={height:550}
   <Discussion project={this.props.data}/>
   </div>
   <div className="tab-pane" id="chats">
-  <Chats project={this.props.data}/>
+  <Chats project={this.props.data} types="private"/>
   </div>
   <div className="tab-pane" id="labels">
   <Label project={this.props.data}/>

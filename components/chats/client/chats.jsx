@@ -20,7 +20,11 @@ console.log(this.sel.state.partner);
   render(){
     var self=this;
 var chatlists=this.props.members.map(function(member){
-  var href='#'+member._id;
+    if(self.props.types=="private"){
+      var href='#private'+member._id;
+    }else {
+      var href='#'+member._id;
+    }
   var com={sel:self,id:member._id};
 
   return( //<li onClick={self.handleClick.bind(com)}><a  href={href} data-toggle="tab">{member.firstname}&nbsp;&nbsp;{member.lastname}</a></li>
@@ -32,7 +36,13 @@ var chatlists=this.props.members.map(function(member){
 )
 });
 var contentlist=this.props.members.map(function(member){
-  return(<div className="tab-pane" id={member._id}><ChatContent partnerId={member._id}/></div>)
+  if(self.props.types=="private"){
+  var ids="private"+member._id;
+}
+else {
+  var ids=member._id;
+}
+  return(<div className="tab-pane" id={ids}><ChatContent partnerId={member._id}/></div>)
 });
 var hgt={height:450};
     return(/*<div className="">

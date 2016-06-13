@@ -8,6 +8,6 @@ import Chats from './../container/chats.js';
 FlowRouter.route("/chats",{
   name:'chats',
   action:function(){
-    ReactLayout.render(MainLayout,{content:<Chats project=""/>});
+    ReactLayout.render(MainLayout,{content:<Chats project="" types="public"/>});
   }
 });

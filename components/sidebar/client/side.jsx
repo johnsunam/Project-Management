@@ -18,10 +18,6 @@ Aside=class Aside extends React.Component {
                    <i className="fa fa-home"></i> <span>Home</span>
                  </a>
                  </li>
-                 <li> <a href="/home">
-                  <i className="fa fa-users"></i> <span>Members</span>
-                </a>
-                </li>
                 <li> <a href="/chats">
                  <i className="fa fa-comments"></i> <span>Chat</span>
                </a>
